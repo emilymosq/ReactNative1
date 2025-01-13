@@ -37,7 +37,7 @@ function LoginScreen(){
                     <TouchableOpacity onPress={() => {
                         navigation.navigate("RegistroScreen");
                     }}>
-                        <Text>Registrate</Text>
+                        <Text style={styles.textRegistro}>Registrate</Text>
                     </TouchableOpacity>
                 </View>
             </View>

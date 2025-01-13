@@ -1,6 +1,6 @@
 import {StyleSheet} from "react-native";
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
     container: {
         width: "100%",
         height: "100%",
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     },
     contenedorimagen: {
         alignItems: "center",
-        marginTop: "35%"
+        marginTop: "25%"
     },
     imagen: {
         width: 150,

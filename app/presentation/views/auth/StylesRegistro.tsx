@@ -15,7 +15,7 @@ const styles = StyleSheet.create ({
     },
     contenedorimagen: {
         alignItems: "center",
-        marginTop: "25%"
+        marginTop: "8%"
     },
     imagen: {
         width: 150,
@@ -48,27 +48,6 @@ const styles = StyleSheet.create ({
         color: "#242424",
         borderBottomColor: "#242424"
     },
-    formInputContainer: {
-        marginBottom: 20,
-
-    },
-    formInput: {
-        borderColor: "gray",
-        borderWidth: 1,
-        padding: 10,
-        borderRadius: 5
-    },
-    boton: {
-        backgroundColor: "#E0E0E0",
-        padding: 10,
-        borderRadius: 5,
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    textRegistro: {
-        textAlign: "center",
-        fontSize: 18,
-    }
 });
 
 export default styles;

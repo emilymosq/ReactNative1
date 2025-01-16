@@ -1,10 +1,11 @@
 import {StyleSheet} from "react-native";
+import {AppColors} from "../../theme/AppTheme";
 
 const styles = StyleSheet.create({
     container: {
         width: "100%",
         height: "100%",
-        backgroundColor: '#F2F2F2',
+        backgroundColor: AppColors.background,
     },
     texto: {
         color: '#242424',
@@ -47,23 +48,6 @@ const styles = StyleSheet.create({
         paddingBottom: 9,
         color: "#242424",
         borderBottomColor: "#242424"
-    },
-    formInputContainer: {
-        marginBottom: 20,
-
-    },
-    formInput: {
-        borderColor: "gray",
-        borderWidth: 1,
-        padding: 10,
-        borderRadius: 5
-    },
-    boton: {
-        backgroundColor: "#E0E0E0",
-        padding: 10,
-        borderRadius: 5,
-        alignItems: "center",
-        justifyContent: "center",
     },
     textRegistro: {
         textAlign: "center",

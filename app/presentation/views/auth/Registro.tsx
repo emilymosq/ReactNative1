@@ -2,6 +2,9 @@ import React from 'react';
 import {View, Text, Image, TextInput, TouchableOpacity, ToastAndroid} from "react-native";
 import styles from "./StylesRegistro";
 import {useNavigation} from "@react-navigation/native";
+import {BotonPersonalizado} from "../../components/BotonPersonalizado";
+import {FormInputPersonalizado} from "../../components/FormInputPersonalizado";
+import { FormInput } from '../../components/FormInput';
 
 function RegistroScreen(){
     const navigation = useNavigation();
@@ -14,46 +17,47 @@ function RegistroScreen(){
             </View>
             <View style={styles.formContainer}>
                 <Text style={styles.formTitle}>Registrate</Text>
-                <View style={styles.formInputContainer}>
-                    <TextInput style={styles.formInput}
-                               placeholder={"Usuario"}
-                               keyboardType={"default"}
-                               secureTextEntry={false}
-                    ></TextInput>
-                </View>
-                <View style={styles.formInputContainer}>
-                    <TextInput style={styles.formInput}
-                               placeholder={"Email"}
-                               keyboardType={"default"}
-                               secureTextEntry={false}
-                    ></TextInput>
-                </View>
-                <View style={styles.formInputContainer}>
-                    <TextInput style={styles.formInput}
-                               placeholder={"Contraseña"}
-                               keyboardType={"default"}
-                               secureTextEntry={true}
-                    ></TextInput>
-                </View>
-                <View style={styles.formInputContainer}>
-                    <TextInput style={styles.formInput}
-                               placeholder={"Confirma tu contraseña"}
-                               keyboardType={"default"}
-                               secureTextEntry={true}
-                    ></TextInput>
-                </View>
+                <FormInput
+                    image={require("../../../../assets/user.png")}
+                    placeholder={"Nombre"}
+                    keyboardType="default"
+                    secureTextEntry={false}
+                    onPressForm={() => alert("")}
+                ></FormInput>
+
+                <FormInput
+                    image={require("../../../../assets/my_user.png")}
+                    placeholder={"Apellidos"}
+                    keyboardType="default"
+                    secureTextEntry={false}
+                    onPressForm={() => alert("")}
+                ></FormInput>
+
+                <FormInput
+                    image={require("../../../../assets/email.png")}
+                    placeholder={"Correo electrónico"}
+                    keyboardType="email-address"
+                    secureTextEntry={false}
+                    onPressForm={() => alert("")}
+                ></FormInput>
+
+                <FormInput
+                    image={require("../../../../assets/phone.png")}
+                    placeholder={"Teléfono"}
+                    keyboardType="numeric"
+                    secureTextEntry={false}
+                    onPressForm={() => alert("")}
+                ></FormInput>
+
+                <FormInput
+                    image={require("../../../../assets/password.png")}
+                    placeholder={"Contraseña"}
+                    keyboardType="default"
+                    secureTextEntry={true}
+                    onPressForm={() => alert("")}
+                ></FormInput>
                 <View>
-                    <TouchableOpacity onPress={() => {ToastAndroid.show("Presionado Toast", ToastAndroid.SHORT)}}
-                                      style={styles.boton}>
-                        <Text>REGISTRAR</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={{marginTop: 20}}>
-                    <TouchableOpacity onPress={() => {
-                        navigation.navigate("LoginScreen");
-                    }}>
-                        <Text style={styles.textRegistro}>Inicia sesión</Text>
-                    </TouchableOpacity>
+                    <BotonPersonalizado onPress={() => {alert("hola")}} text={"REGISTRAR"}/>
                 </View>
             </View>
         </View>

@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, Image, TextInput, TouchableOpacity, ToastAndroid} from "react-native";
 import styles from "./StylesRegistro";
 import {useNavigation} from "@react-navigation/native";
 import {BotonPersonalizado} from "../../components/BotonPersonalizado";
-import {FormInputPersonalizado} from "../../components/FormInputPersonalizado";
 import { FormInput } from '../../components/FormInput';
+import viewModel from "./ViewModel";
 
 function RegistroScreen(){
     const navigation = useNavigation();
-
+    const {email, password, nombre, apellidos, telefono, onChangeRegister, register} = viewModel.RegisterViewModel();
     return(
         <View style={styles.container}>
             <View style={styles.contenedorimagen}>
@@ -22,7 +22,7 @@ function RegistroScreen(){
                     placeholder={"Nombre"}
                     keyboardType="default"
                     secureTextEntry={false}
-                    onPressForm={() => alert("")}
+                    onPressForm={(text) => onChangeRegister("nombre", text)}
                 ></FormInput>
 
                 <FormInput
@@ -30,7 +30,7 @@ function RegistroScreen(){
                     placeholder={"Apellidos"}
                     keyboardType="default"
                     secureTextEntry={false}
-                    onPressForm={() => alert("")}
+                    onPressForm={(text) => onChangeRegister("apellidos", text)}
                 ></FormInput>
 
                 <FormInput
@@ -38,7 +38,7 @@ function RegistroScreen(){
                     placeholder={"Correo electrónico"}
                     keyboardType="email-address"
                     secureTextEntry={false}
-                    onPressForm={() => alert("")}
+                    onPressForm={(text) => onChangeRegister("email", text)}
                 ></FormInput>
 
                 <FormInput
@@ -46,7 +46,7 @@ function RegistroScreen(){
                     placeholder={"Teléfono"}
                     keyboardType="numeric"
                     secureTextEntry={false}
-                    onPressForm={() => alert("")}
+                    onPressForm={(text) => onChangeRegister("telefono", text)}
                 ></FormInput>
 
                 <FormInput
@@ -54,10 +54,13 @@ function RegistroScreen(){
                     placeholder={"Contraseña"}
                     keyboardType="default"
                     secureTextEntry={true}
-                    onPressForm={() => alert("")}
+                    onPressForm={(text) => onChangeRegister("password", text)}
                 ></FormInput>
                 <View>
-                    <BotonPersonalizado onPress={() => {alert("hola")}} text={"REGISTRAR"}/>
+                    <BotonPersonalizado onPress={() => {
+                        register()
+                        ToastAndroid.show("Registro exitoso", ToastAndroid.SHORT);
+                    }} text={"REGISTRAR"}/>
                 </View>
             </View>
         </View>

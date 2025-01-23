@@ -5,7 +5,11 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import LoginScreen from "./app/presentation/views/auth/Login";
 import RegistroScreen from "./app/presentation/views/auth/Registro";
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+    LoginScreen: undefined,
+    RegistroScreen: undefined,
+}
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (

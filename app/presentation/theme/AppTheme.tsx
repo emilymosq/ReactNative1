@@ -5,3 +5,4 @@ export const AppColors = {
     secondary: "",
     background: "#F2F2F2",
 }
+

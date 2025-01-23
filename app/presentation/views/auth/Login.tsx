@@ -4,11 +4,16 @@ import styles from "./StylesLogin";
 import {useNavigation} from "@react-navigation/native";
 import {BotonPersonalizado} from "../../components/BotonPersonalizado";
 import {FormInput} from "../../components/FormInput";
+import viewModel from "./ViewModel";
+import {NativeStackNavigationProp} from "@react-navigation/native-stack";
+import {RootStackParamList} from "../../../../App";
 
 function LoginScreen(){
-    const navigation = useNavigation();
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    //const [email, setEmail] = useState<string>("");
+   // const [password, setPassword] = useState<string>("");
+
+    const {email, password, onChangeLogin} = viewModel.LoginViewModel();
 
     return(
         <View style={styles.container}>
@@ -23,17 +28,17 @@ function LoginScreen(){
                         placeholder={"Email"}
                         keyboardType="email-address"
                         secureTextEntry={false}
-                        onPressForm={(text) => setEmail(text)}
+                        onPressForm={(text) => onChangeLogin("email", text)}
                     ></FormInput>
                     <FormInput
                         image={require("../../../../assets/password.png")}
                         placeholder={"Contraseña"}
                         keyboardType="default"
                         secureTextEntry={true}
-                        onPressForm={(text) => setPassword(text)}
+                        onPressForm={(text) => onChangeLogin("password", text)}
                     ></FormInput>
                 <View>
-                    <BotonPersonalizado onPress={() => {alert("hola")}} text={"INICIAR SESION"}/>
+                    <BotonPersonalizado onPress={() => {alert("Usuario: " + email + " contraseña: " + password)}} text={"INICIAR SESION"}/>
                 </View>
                 <View style={{marginTop: 20}}>
                     <TouchableOpacity onPress={() => {

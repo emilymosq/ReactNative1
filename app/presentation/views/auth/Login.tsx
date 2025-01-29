@@ -11,9 +11,9 @@ import {RootStackParamList} from "../../../../App";
 function LoginScreen(){
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     //const [email, setEmail] = useState<string>("");
-   // const [password, setPassword] = useState<string>("");
+    // const [password, setPassword] = useState<string>("");
 
-    const {email, password, onChangeLogin} = viewModel.LoginViewModel();
+    const {email, password, onChangeLogin, login} = viewModel.LoginViewModel();
 
     return(
         <View style={styles.container}>
@@ -38,7 +38,10 @@ function LoginScreen(){
                         onPressForm={(text) => onChangeLogin("password", text)}
                     ></FormInput>
                 <View>
-                    <BotonPersonalizado onPress={() => {alert("Usuario: " + email + " contraseña: " + password)}} text={"INICIAR SESION"}/>
+                    <BotonPersonalizado onPress={() => {
+                            login()
+                            ToastAndroid.show("Registro exitoso", ToastAndroid.SHORT);
+                        }} text={"INICIAR SESION"}/>
                 </View>
                 <View style={{marginTop: 20}}>
                     <TouchableOpacity onPress={() => {

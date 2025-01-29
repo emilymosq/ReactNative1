@@ -4,7 +4,6 @@ import {AppColors} from "../theme/AppTheme";
 
 interface Props {
     image: any,
-
     placeholder: string,
     keyboardType: KeyboardType,
     secureTextEntry: boolean,

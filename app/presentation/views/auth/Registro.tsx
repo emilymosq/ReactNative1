@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Image, TextInput, TouchableOpacity, ToastAndroid} from "react-native";
 import styles from "./StylesRegistro";
 import {useNavigation} from "@react-navigation/native";
@@ -8,7 +8,12 @@ import viewModel from "./ViewModel";
 
 function RegistroScreen(){
     const navigation = useNavigation();
-    const {email, password, nombre, apellidos, telefono, onChangeRegister, register} = viewModel.RegisterViewModel();
+    const {email, password, firstName, lastName, phone, onChangeRegister, register, errorMessage} = viewModel.RegisterViewModel();
+    useEffect(() => {
+        if(errorMessage != ""){
+            ToastAndroid.show(errorMessage, ToastAndroid.LONG);
+        }
+    }, [errorMessage])
     return(
         <View style={styles.container}>
             <View style={styles.contenedorimagen}>
@@ -22,7 +27,7 @@ function RegistroScreen(){
                     placeholder={"Nombre"}
                     keyboardType="default"
                     secureTextEntry={false}
-                    onPressForm={(text) => onChangeRegister("nombre", text)}
+                    onPressForm={(text) => onChangeRegister("firstName", text)}
                 ></FormInput>
 
                 <FormInput
@@ -30,7 +35,7 @@ function RegistroScreen(){
                     placeholder={"Apellidos"}
                     keyboardType="default"
                     secureTextEntry={false}
-                    onPressForm={(text) => onChangeRegister("apellidos", text)}
+                    onPressForm={(text) => onChangeRegister("lastName", text)}
                 ></FormInput>
 
                 <FormInput
@@ -46,7 +51,7 @@ function RegistroScreen(){
                     placeholder={"Teléfono"}
                     keyboardType="numeric"
                     secureTextEntry={false}
-                    onPressForm={(text) => onChangeRegister("telefono", text)}
+                    onPressForm={(text) => onChangeRegister("phone", text)}
                 ></FormInput>
 
                 <FormInput
@@ -59,7 +64,7 @@ function RegistroScreen(){
                 <View>
                     <BotonPersonalizado onPress={() => {
                         register()
-                        ToastAndroid.show("Registro exitoso", ToastAndroid.SHORT);
+                        //ToastAndroid.show("Registro exitoso", ToastAndroid.SHORT);
                     }} text={"REGISTRAR"}/>
                 </View>
             </View>
